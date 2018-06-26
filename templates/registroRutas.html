@@ -1,0 +1,50 @@
+<ion-view title="Mis Rutas" >
+    <ion-nav-buttons side="right" ng-show="false">
+        <button class="button button-icon ion-android-more-vertical" ng-click="popover.show($event)" style="right: 10%">
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content padding="true"  class="has-header">
+        <!--<div id="map"></div> -->
+        <button class="button button-energized button-block icon-right ion-chevron-down" has-search="true" 
+                options="selectableRutas" 
+                ng-model="searchPropertiesSearchModel" modal-select="" search-properties="['nombreRuta']"
+                on-select="shoutLoudRutas(newValue, oldValue)"
+                modal-title ='Selecciona Tu Ruta'
+                search-placeholder='Busca Tu Ruta'
+                cancel-search-button='Limpiar'
+                ok-button='Ok'
+                reset-button='Cancelar'
+                style='border-radius:30px 30px 30px 30px;'
+                ng-click ="inicioRutas()">
+            {{searchPropertiesSearchModel!==''?searchPropertiesSearchModel.nombreRuta:'Mis Rutas'}}
+            <div class="option">
+                {{option.nombreRuta}}
+            </div>
+        </button>
+        <label class="item item-input" style="border-radius:  10px;">
+            <span class="input-label" style="color: #ff8700; width: 20%; font-weight: bold;">Ruta</span>
+            <input id="nombreRuta" ng-model="nombreRutaModel" type="text" style="background: white;" >
+        </label>
+        <br>
+        <label class="item item-input" style="border-radius:  10px;" >
+            <input id="descOrigen" ng-Model="descOrigenModel" type="text" placeholder="Origen..." ng-focus="disableTap()">
+            <a ng-click="ubicaDirOrigen()" style="color: #ff8700" id="locateMeBtn" class="button button-icon icon ion-ios-location">
+            </a>
+        </label>
+        <br/>
+        <label class="item item-input" style="border-radius:  10px;" >
+            <input id="descDestino" ng-model="descDestinoModel" type="text" placeholder="Destino..."  ng-focus="disableTap()">
+            <a ng-click="ubicaDirPartida()" id="locateMeBtn" style="color: #ff8700" class="button button-icon icon ion-ios-location">
+            </a>
+        </label>
+        <br>
+        <ion-toggle ng-model="condicion" ng-checked="value" ng-change="changeCondicion()" style="color: #ff8700; font-weight: bold; border-radius:  10px;">Describe Tu Ruta</ion-toggle>
+        <div ng-if="condicion">
+            <label class="item item-input" style="border-radius:  15px;">
+                <textarea id="descRuta" ng-model="descRutaModel" rows="4"  style="background: white;" type="text"  placeholder="Describe Tu Ruta">{{searchPropertiesSearchModel.observaciones}}</textarea>
+            </label>
+       </div>
+        <button ng-click="actualizaRuta()" class="button button-energized button-block">Crea/Actualiza</button>
+    </ion-content>
+</ion-view>

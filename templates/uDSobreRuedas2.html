@@ -1,0 +1,30 @@
+<ion-view title="UD Sobre Ruedas"  id="page7" padding="true">
+    <ion-nav-buttons side="right" ng-show="false">
+        <button class="button button-icon ion-android-more-vertical" ng-click="popover.show($event)">
+        </button>
+    </ion-nav-buttons>
+    <ion-header-bar  class="bar-subheader">
+        <label class="item item-input" style="border-radius:  10px; width: 100%;box-shadow: 0 0 5px black;"  >
+            <i class="icon ion-search"></i>
+            <input type="search" id="findName"  ng-model = 'busqueda' placeholder="&nbsp Buscar...">
+        </label>
+    </ion-header-bar>
+    <ion-content padding="true" class="has-header">
+
+
+        <ion-list id="uDSobreRuedas2-list2">
+
+            <ion-item padding="true" class="item-avatar item-icon-right energized" id="uDSobreRuedas2-list-item1" style="border-radius: 10px; box-shadow: 0 0 10px black; width: 100%;margin-bottom: 10px;" ng-repeat = "viajes in respuesta | filter : viajes.nombreUsuario = busqueda">
+                <img src="img/{{viajes.modoViaje}}.png" ng-click="verImgenPerfil(viajes.facebookID, viajes.nombreUsuario)">
+                <a style="text-decoration:none;"  ng-click="detalleUsuario(viajes.facebookID,viajes.codigoID)" >
+                    <h2>
+                        <b style="color: #ff8700;">{{viajes.nombreUsuario}}</b>
+                        <p style="white-space:normal;">{{viajes.descripcionViaje}}</p>
+                        <i class="icon ion-chevron-right icon-accessory"></i>
+                    </h2>
+                </a>
+            </ion-item>
+        </ion-list>
+       
+    </ion-content>
+</ion-view>

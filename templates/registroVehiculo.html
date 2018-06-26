@@ -1,0 +1,65 @@
+<ion-view  title="Registro Vehículo" id="page9">
+
+    <ion-content padding="true" >
+        <form id="vehiculoReg-form5" class="list">
+            <button class="button button-energized button-block icon-right ion-chevron-down" has-search="true" 
+                    options="selectableNames" 
+                    ng-model="searchPropertiesSearchModel" modal-select="" search-properties="['descVehiculo']" 
+                    modal-title ='Selecciona Tu Vehículo'
+                    search-placeholder='Busca Tu Vehículo'
+                    cancel-search-button='Limpiar'
+                    ok-button='Ok'
+                    reset-button='Cancelar'
+                    style='border-radius:30px 30px 30px 30px;'
+                    ng-click ="vehiculoSelect()">
+                {{searchPropertiesSearchModel.descVehiculo!==''?searchPropertiesSearchModel.descVehiculo:'Selecciona Tu Vehículo'}}
+                <div class="option">
+                    {{option.descVehiculo}}
+                </div>
+            </button>
+
+            <label class="item item-input" style="border-radius:  10px;">
+                <span class="input-label" style="color: #ff8700; width: 20%; font-weight: bold;">ID. Vehículo</span>
+                <input id="idCar" ng-model="searchPropertiesSearchModel.descVehiculo" type="text" style="background: white;">
+            </label>
+            <br>
+            <label class="item item-input" style="border-radius:  10px;">
+                <span class="input-label" style="color: #ff8700; width: 20%; font-weight: bold;">Marca</span>
+                <input id="marca" ng-model="searchPropertiesSearchModel.marca" type="text" style="background: white;" >
+            </label>
+            <br>
+            <label class="item item-input" style="border-radius:  10px;">
+                <span class="input-label" style="color: #ff8700; width: 20%; font-weight: bold;">Placa</span>
+                <input id="placa" ng-model="searchPropertiesSearchModel.placa" type="text" style="background: white;" >
+            </label>
+            <br>
+            <label class="item item-input" style="border-radius:  10px;">
+                <span class="input-label" style="color: #ff8700; width: 20%; font-weight: bold;">Color</span>
+                <input id="colorCar" ng-model="searchPropertiesSearchModel.colorVehiculo" type="color" style="background: white;" >
+            </label>
+            <br>
+            <label class="item item-input" style="border-radius:  10px;">
+                <span class="input-label" style="color: #ff8700; width: 20%; font-weight: bold;">Tipo Vehículo</span>
+                <select id = "tipo" ng-model="tipoVehiculo[searchPropertiesSearchModel.tipoVehiculo - 1]"  ng-options="vehiculo.name for vehiculo in tipoVehiculo track by vehiculo.value" style="width: 60%; border: white; background: white;">
+                   
+                    <!--<option ng-selected = "{{searchPropertiesSearchModel.tipoVehiculo}}">{{searchPropertiesSearchModel.descTipoVehiculo}}</option> -->
+                </select>
+            </label>
+            <br>
+            <label class="item item-input" style="border-radius:  10px;">
+                <span class="input-label" style="color: #ff8700; width: 20%; font-weight: bold;">Puestos Disp.</span>
+                <input id="puestos" ng-model="searchPropertiesSearchModel.puestosMax" type="tel" style="background: white;" >
+            </label>
+            <h4  style="color: #ff8700; font-weight: bold; text-align: center;">Observaciones</h4>
+            <label class="item item-input" style="border-radius:  10px;">
+                <textarea id="observacion" rows="3"  style="background: white;" type="text"  placeholder="Descripción">{{searchPropertiesSearchModel.observaciones}}</textarea>
+            </label>
+
+        </form>
+
+
+        <button id="usuario-button3" ng-click = "actualizaCrea()" class="button button-energized button-block">Crea/ Actualiza Tu Vehículo</button>
+    </ion-content>
+
+
+</ion-view>

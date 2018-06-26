@@ -1,0 +1,90 @@
+<ion-view  title="" id="page8" padding="true" >
+
+    <ion-nav-buttons side="left" >
+        <div  ng-repeat = "encabezado in datosUsuarios">
+            <img src="img/{{encabezado.modoViaje}}.png" style="width: 50%;border-color: orange;border-radius: 50%;border-style: solid;border-width: 2px;margin-top: 5%;">
+            <h2 class="title title-left header-item" style="left: 20%;">{{encabezado.nombreUsuario}}</h2>
+        </div>
+    </ion-nav-buttons>
+    <ion-content  class="has-header" ng-repeat = "usuario in datosUsuarios" style="padding:3%">
+        <ion-list id="usuario-list3" padding="true">
+            <ion-item  class="item-avatar item-icon-right energized" id="usuario-list-item2" style="border-radius: 50px; text-align: center; margin-bottom: 10px;">
+                <img src="{{usuario.imgPerfilFacebook}}" style=" top: 15%;" ng-click="verImgenUsuario(usuario.imgPerfilFacebook, usuario.nombreUsuario)" >
+                <a ng-click="verRuta(usuario.longitudPartida, usuario.latitudPartida, usuario.longitudDestino, usuario.latitudDestino, usuario.modoViaje, usuario.nombreUsuario)" style="text-decoration:none;">
+                    <div>
+                        <b style="color: #ff8700;">{{usuario.rutaFavorita}}</b>
+                        <i class="icon ion-chevron-right icon-accessory"></i>
+                    </div>
+                </a>
+            </ion-item>
+        </ion-list>
+
+        <label class="item item-input" style="border-radius:  10px;">
+            <textarea id="descripcionViaje" rows="5" disabled="true" style="background: white;" type="text"  placeholder="Descripción">{{usuario.descripcionViaje}}</textarea>
+        </label>
+        <label class="item item-input" style="border-radius:  10px;">
+            <span class="input-label" style="color: #ff8700; width: 20%; font-weight: bold;">Origen</span>
+            <input type="text" disabled="true" style="background: white;" value="{{usuario.direccionParitda}}">
+        </label>
+        <label class="item item-input" style="border-radius:  10px;">
+            <span class="input-label" style="color: #ff8700; width: 20%; font-weight: bold;">Destino</span>
+            <input type="text" disabled="true" style="background: white;" value="{{usuario.direccionDestino}}">
+        </label>
+        </label>
+        <label class="item item-input" style="border-radius:10px;">
+            <span class="input-label" type="time" step="1" style="color: #ff8700; width: 30%; font-weight: bold;">Fecha Viaje</span>
+            <input type="date"  ng-model="fecha" disabled="true" style="background: white;" >
+        </label>
+        <label class="item item-input" style="border-radius:10px;">
+            <span class="input-label" type="time" step="1" style="color: #ff8700; width: 30%; font-weight: bold;">Hora Viaje</span>
+            <input type="time" ng-model="fecha" disabled="true" style="background: white;" value="{{}}">
+        </label>
+        <a style="text-decoration: none;" href="mailto:{{usuario.correoContacto}}?subject= UD SOBRE RUEDAS&body= \n \n \nMensaje Enviado Desde UDSobreRuedas">
+            <label class="item item-input" style="border-radius:10px;" >
+
+                <span class="input-label" style="color: #ff8700; width: 20%; font-weight: bold;">Email</span>
+                <input type="text" disabled="true" style="background: white;" value="{{usuario.correoContacto}}">
+                <i class="icon ion-android-mail" style="width: 7%;"></i>
+
+            </label>
+        </a>
+        <a style="text-decoration: none;"  href="tel:{{usuario.telefonoContacto}}">
+            <label class="item item-input" style="border-radius:10px;" href="tel: {{usuario.telefonoContacto}}">
+                <span class="input-label" style="color: #ff8700; width: 30%; font-weight: bold;">Telefono</span>
+                <input type="text" disabled="true" style="background: white;" value="{{usuario.telefonoContacto}}">
+                <i class="icon ion-android-call" style="width: 10%;"></i>
+            </label>
+        </a>
+        <a style="text-decoration: none;"  href="sms://{{usuario.telefonoContacto}}">
+            <label class="item item-input" style="border-radius:10px;">
+                <span class="input-label" style="color: #ff8700; width: 30%; font-weight: bold;">SMS</span>
+                <input type="text" disabled="true" style="background: white;" value="{{usuario.telefonoContacto}}">
+                <i class="icon ion-android-textsms" style="width: 10%;"></i>
+            </label>
+        </a>
+        <div ng-if="usuario.modoViaje == '3' || usuario.modoViaje == '4' ">
+            <label class="item item-input" style="border-radius:10px;">
+                <span class="input-label" style="color: #ff8700; width: 40%; font-weight: bold;">Placa Vehículo</span>
+                <input type="text" disabled="true" style="background: white;" value="{{usuario.placaVehiculo}}">
+            </label>
+            <label class="item item-input" style="border-radius:10px;">
+                <span class="input-label" style="color: #ff8700; width: 40%; font-weight: bold;">Puestos</span>
+                <input type="text" disabled="true" style="background: white;" value="{{usuario.puestosDisponibles}}">
+            </label>
+        </div>
+        <div id="observaciones" ng-if="usuario.observacionFlag == 1">
+            <h4  style="color: #ff8700; font-weight: bold; text-align: center;">Observaciones</h4>
+            <label class="item item-input" style="border-radius:  10px;">
+                <textarea id="descripcionViaje" rows="7" disabled="true" style="background: white;" type="text"  placeholder="Descripción">{{usuario.observacionDesc}}</textarea>
+            </label>
+        </div>
+        <div ng-if="usuario.tipoConsulta == 1">
+            <button ng-click="solicitarUser()" class="button button-energized button-block">Solicitar Viaje</button>
+        </div>
+
+        <div ng-if="usuario.tipoConsulta == 2">
+            <button ng-click="confirmarUser()" class="button button-energized button-block">Confirmar Viaje</button>
+        </div>
+    </ion-content>
+
+</ion-view>

@@ -1,0 +1,22 @@
+<ion-view  title="Sugerencias" id="page9">
+
+    <ion-content padding="true" >
+        <form id="modoDeViaje-form6" class="list">
+            <label class="item item-input" style="border-radius:  10px;" >
+                <input id="tituloSugerencia" maxlength="45" type="text" placeholder="Titulo Sugerencia" style="text-align: center;">
+            </label>
+            <br/>
+            <label class="item item-input" style="border-radius:  10px;">
+                <textarea id="descripcionSugerencia" rows="5" maxlength="140" type="text" placeholder="Descripción"></textarea>
+            </label>
+            <br/>
+            <ion-toggle ng-model="error"  ng-checked="value" ng-change="change()" style="border-radius:  10px;">Error En App</ion-toggle>
+            <ion-toggle ng-model="mejoras" ng-checked="value" ng-change="change()" style="border-radius:  10px;">Mejoras</ion-toggle>
+            <ion-toggle ng-model="proyecto" ng-checked="value" ng-change="change()" style="border-radius:  10px;">Proyecto De Grado</ion-toggle>
+            <ion-toggle ng-model="otros" ng-checked="value" ng-change="change()" style="border-radius:  10px;">Otros</ion-toggle>
+
+
+        </form>
+        <button id="usuario-button3" class="button button-energized button-block" ng-click = "enviarSug()">Enviar Sugerencia</button>
+    </ion-content>
+</ion-view>

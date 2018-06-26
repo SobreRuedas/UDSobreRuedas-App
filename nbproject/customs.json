@@ -1,0 +1,61 @@
+{
+    "elements": {
+        "ion-side-menus": {},
+        "ion-radio": {},
+        "h2energized": {},
+        "ion-tab": {},
+        "ion-nav-back-button": {},
+        "ion-content": {
+            "attributes": {
+                "scroll": {}
+            }
+        },
+        "ion-nav-bar": {},
+        "ion-side-menu": {},
+        "ion-nav-view": {},
+        "ion-list": {},
+        "ion-item": {
+            "attributes": {
+                "ng-click": {}
+            }
+        },
+        "ion-tabs": {},
+        "ion-nav-buttons": {
+            "attributes": {
+                "ng-show": {},
+                "side": {}
+            }
+        },
+        "ion-toggle": {
+            "attributes": {
+                "ng-model": {},
+                "ng-change": {},
+                "ng-checked": {},
+                "style": {},
+                "toggle-class": {}
+            }
+        },
+        "ion-modal-view": {},
+        "ion-side-menu-content": {},
+        "ion-view": {
+            "attributes": {
+                "title": {}
+            }
+        }
+    },
+    "attributes": {
+        "menu-toggle": {},
+        "ion-button": {
+            "context": "button"
+        },
+        "padding": {},
+        "hide-back-button": {},
+        "name": {},
+        "id": {},
+        "class": {},
+        "animation": {
+            "context": "body"
+        },
+        "ui-sref": {}
+    }
+}

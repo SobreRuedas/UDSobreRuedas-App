@@ -1,0 +1,33 @@
+<ion-view title="UD Sobre Ruedas" hide-back-button="true" >
+    <ion-nav-buttons side="right" ng-show="false">
+        <button class="button button-icon ion-android-more-vertical" ng-click="popover.show($event)" style="right: 10%">
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content padding="true" scroll="false" class="has-header">
+        <div id="map"></div>
+        
+        <button class="button button-energized button-block icon-right ion-chevron-down" has-search="true" 
+                options="selectableRutas" 
+                ng-model="searchPropertiesSearchModel" modal-select="" search-properties="['name']" 
+                on-select="shoutLoudRutas(newValue, oldValue)"
+                modal-title ='Selecciona Tu Ruta'
+                search-placeholder='Busca Tu Ruta'
+                cancel-search-button='Limpiar'
+                ok-button='Ok'
+                reset-button='Cancelar'
+                style='border-radius:30px 30px 30px 30px;'
+                ng-click ="inicioRutas()">
+            {{searchPropertiesSearchModel!==''?searchPropertiesSearchModel.nombreRuta:'Mis Rutas'}}
+            <div class="option">
+                {{option.nombreRuta}}
+            </div>
+        </button>
+        <a ng-click="locateMe()" id="locateMeBtn" class="button button-icon icon ion-android-locate"  
+           style = "right: 1%; border-radius: 50%; background: #ff8700; box-shadow: black 0px 0px 20px 0px; border-right-width: 4px; border-left-width: 4px; z-index: 0; position: absolute; bottom: 12%; color: white"></a>
+        <a ng-click="traceRuteUser()" id="locateMeBtn" class="button button-icon icon ion-android-contacts"  
+           style = "right: 80%; border-radius: 100%; background: #ff8700; box-shadow: black 0px 0px 20px 0px; border-right-width: 4px; border-left-width: 4px; z-index: 0; position: absolute; bottom: 15%; color: white"></a>
+
+    </ion-content>
+
+</ion-view>

@@ -1,0 +1,28 @@
+<ion-view  title="Solicitudes Confirmadas" id="page9">
+  <ion-nav-buttons side="right" ng-show="false">
+        <button class="button button-icon ion-android-more-vertical" ng-click="popover.show($event)">
+        </button>
+    </ion-nav-buttons>
+    <ion-header-bar  class="bar-subheader">
+        <label class="item item-input" style="border-radius:  10px; width: 100%;box-shadow: 0 0 5px black;"  >
+            <i class="icon ion-search"></i>
+            <input type="search" id="findName"  ng-model = 'busqueda' placeholder="&nbsp Busca Por Nombre">
+
+        </label>
+    </ion-header-bar>
+  <ion-content padding="true">
+    <ion-list id="uDSobreRuedas2-list2">
+
+            <ion-item padding="true" class="item-avatar item-icon-right energized" id="uDSobreRuedas2-list-item1" style="border-radius: 10px; box-shadow: 0 0 10px black; width: 100%;margin-bottom: 10px;" ng-repeat = "viajes in datosUsuarios | filter : viajes.nombreUsuario = busqueda">
+                <img src="{{viajes.imgFacebookConfirmante}}" ng-click="verImgenPerfil(viajes.imgPerfilFacebook, viajes.nombreUsuario)">
+                <a style="text-decoration:none;"  ng-click="detalleUsuario(viajes.facebookID,viajes.codigoID)" >
+                    <h2>
+                        <b style="color: #ff8700;">{{viajes.nombreConfirmante}}</b>
+                        <p style="white-space:normal;">{{viajes.descRutaConfirmante}}</p>
+                        <i class="icon ion-chevron-right icon-accessory"></i>
+                    </h2>
+                </a>
+            </ion-item>
+        </ion-list>
+  </ion-content>
+</ion-view>

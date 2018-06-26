@@ -1,0 +1,22 @@
+<ion-view  title="Notificaciones" id="page10">
+    <ion-content padding="true">
+        <form id="modoDeViaje-form6" class="list" ng-repeat="datos in detalleNotificacion">
+            <label class="item item-input" style="border-radius:  10px;" > 
+                
+                <h2 style="font-weight: bold; text-align: center; color: #ff8700">{{datos.titulo}}</h2>
+            </label>
+            <br/>
+            <img  style="width:100%;" src = "{{datos.imagen}}">
+            <br/>
+            <label class="item item-input" style="border-radius:10px;" >
+                <p>
+                   {{datos.descripcion}}
+                </p>
+            </label>
+            <hr/>
+            
+        </form>
+        <a class="button button-energized button-block icon ion-information-circled" href="{{datos.enlace}}">&nbsp &nbsp Ver Mas Información...</a>
+       
+    </ion-content>
+</ion-view>

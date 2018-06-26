@@ -1,0 +1,29 @@
+<ion-view  title="Notificaciones" id="page9">
+
+    <ion-content padding="true" class="card-background-page" style="overflow-x:hidden;">
+        <ion-card style = "position: relative; text-align: center;" ng-click = "envirMail()">
+
+            <div style="position: absolute; bottom: 700%; font-size: 2.0em; width: 100%; font-weight: bold; color: #fff;">UD Sobre Ruedas</div>
+            <div style="font-size: 1.0em; position: absolute; bottom: 400%; width: 100%; font-weight: bold; color: #fff;">Envianos Tu Notificación</div>
+            <div style="font-size: 1.0em; position: absolute; bottom: 200%; width: 100%; font-weight: bold; color: #fff;">Recuerda Que Las Notificaciones Creadas Seran Filtradas De Acuerdo A Su Contenido</div>
+            <img style="width:100%; box-shadow: 0 0 20px 0px black;"  src="img/bogota 1.jpg"/>
+
+        </ion-card>
+
+        <div class="card" style="box-shadow: 0 0 5px 0px black;" ng-repeat="notificacion in respuesta">
+            <div class="item item-avatar">
+                <img src="img/icon.png">
+                <h2 style="font-weight: bold; text-align: center; color: #ff8700">{{notificacion.titulo}}</h2>
+            </div>
+            
+                <div class="item item-body">
+                    <a ng-click="parametros(notificacion.titulo,notificacion.imgFull,notificacion.descripcionFull,notificacion.link)" style="text-decoration:none;">
+                    <img  style="width:100%;" src = "{{notificacion.imgVista}}">
+                     </a>
+                    <hr/>
+                    <p>{{notificacion.descripcionBreve}}</p>
+                </div>
+           
+        </div>
+    </ion-content>
+</ion-view>

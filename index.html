@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <script src="lib/ionic/js/ionic.bundle.js"></script>
+        <script src="lib/ionic-modal-select/dist/ionic-modal-select.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places" async defer>
+        </script>
+
+
+        <!--<script src="js/googleMaps.js"></script> 
+        cordova script (this will be a 404 during development) -->
+        <script src="cordova.js"></script>
+
+        <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+        <link href="css/ionic.app.css" rel="stylesheet">
+        -->
+
+        <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+
+        <style type="text/css">
+            .platform-ios .manual-ios-statusbar-padding{
+                padding-top:20px;
+            }
+            .manual-remove-top-padding{
+                padding-top:0px; 
+            }
+            .manual-remove-top-padding .scroll{
+                padding-top:0px !important;
+            }
+            ion-list.manual-list-fullwidth div.list, .list.card.manual-card-fullwidth {
+                margin-left:-10px;
+                margin-right:-10px;
+            }
+            ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidth > .item {
+                border-radius:0px;
+                border-left:0px;
+                border-right: 0px;
+            }
+            .show-list-numbers-and-dots ul{
+                list-style-type: disc;
+                padding-left:40px;
+            }
+            .show-list-numbers-and-dots ol{
+                list-style-type: decimal;
+                padding-left:40px;
+            }
+            .custom-icon {
+                font-size: 10px;
+                color : #ff8700;
+            }
+            .platform-android .bar-subheader.has-tabs-top{
+                top:93px !important;
+            }
+
+            .platform-android .has-subheader.has-tabs-top{
+                top:137px;
+            }
+            .modal-custom-full{
+                height: 90%;
+                width: 90%;
+            }
+            #map {
+                height: 100%;
+                width: 100%;
+                padding: inherit;
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+                left: 0px;
+            }
+            ion-popover-view.fit {
+                height: auto !important;
+                width: auto !important;
+            }
+
+            ion-popover-view.fit ion-content {
+                position: relative !important;
+            }
+            .pac-container {
+                z-index: 20;
+            }
+
+            .card-background-page {
+
+                ion-card {
+                    position: relative;
+                    text-align: center;
+                }
+
+                .card-title {
+                    position: absolute;
+                    top: 36%;
+                    font-size: 2.0em;
+                    width: 100%;
+                    font-weight: bold;
+                    color: #fff;
+                }
+
+                .card-subtitle {
+                    font-size: 1.0em;
+                    position: absolute;
+                    top: 52%;
+                    width: 100%;
+                    color: #fff;
+                }
+
+            }
+            .back-button .back-text .default-title {
+                display:none;
+            }
+            ::-webkit-scrollbar { 
+                display: none; 
+            }
+            .pac-container:after {
+                /* Disclaimer: not needed to show 'powered by Google' if also a Google Map is shown */
+
+                background-image: none !important;
+                height: 0px;
+            }
+            .pac-container, .pac-item {
+                z-index: 10000 !important;
+                
+            }
+        </style>
+
+        <script src="js/app.js"></script>
+        <script src="js/controllers.js"></script>
+
+        <script src="js/routes.js"></script>
+
+        <script src="js/directives.js"></script>
+        <script src="js/services.js"></script>
+
+
+        <!-- Only required for Tab projects w/ pages in multiple tabs 
+        <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
+        -->
+
+    </head>
+    <body ng-app="app" animation="slide-left-right-ios7">
+
+        <div>
+            <ion-side-menus data-componentid="side-menu21">
+                <ion-side-menu-content drag-content="toggledrag" enable-menu-with-back-views="true" >
+                    <ion-nav-bar class="bar-stable">
+                        <ion-nav-back-button></ion-nav-back-button>
+                        <ion-nav-buttons side="left">
+                            <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+                        </ion-nav-buttons>
+                    </ion-nav-bar>
+                    <ion-nav-view></ion-nav-view>
+                </ion-side-menu-content>
+                <ion-side-menu side="left"  id="side-menu21" >
+                    <ion-content ng-controller="loginCtrl"  style="overflow-y: hidden; top:0px !important;" class="side-menu-left">
+                        <ion-list id="itemMenu-list8" data-componentid="list8">
+                            <ion-item ng-model="datos" class="item-avatar energized" id="itemMenu-list-item15" data-componentid="list-item15" >
+                                <img id="imagenPerfil">
+                                <h2energized>
+                                    <b id="nombreFacebook"></b>
+                                    <p id="codigoUd" style="white-space:normal;"></p>
+                                </h2energized>
+                            </ion-item>
+                            <ion-item class="item-icon-left item-icon-right" id="itemMenu-list-item16" data-componentid="list-item16" ui-sref="uDSobreRuedas.registerCar()" menu-toggle="left">
+                                <i class="icon ion-android-car custom-icon"></i><h4>Registro Vehículo</h4>
+                                <i class="icon ion-chevron-right icon-accessory"></i>
+                            </ion-item>
+                            <ion-item class="item-icon-left item-icon-right" id="itemMenu-list-item17" data-componentid="list-item17" ui-sref="uDSobreRuedas.notify()" menu-toggle="left">
+                                <i class="icon ion-ios-bell custom-icon"></i><h4>Notificaciones</h4>
+                                <i class="icon ion-chevron-right icon-accessory"></i>
+                            </ion-item>
+                            <ion-item class="item-icon-left item-icon-right" id="itemMenu-list-item18" data-componentid="list-item18" ui-sref="uDSobreRuedas.prompts()" menu-toggle="left">
+                                <i class="icon ion-email-unread custom-icon"></i><h4>Sugerencias</h4>
+                                <i class="icon ion-chevron-right icon-accessory"></i>
+                            </ion-item>
+                            <ion-item class="item-icon-left item-icon-right" id="itemMenu-list-item19" data-componentid="list-item19" ui-sref="uDSobreRuedas.pending()" menu-toggle="left">
+                                <i class="icon ion-android-person-add custom-icon"></i><h4>Solicitudes Pendientes</h4>
+                                <i class="icon ion-chevron-right icon-accessory"></i>
+                            </ion-item>
+                            <ion-item class="item-icon-left item-icon-right" id="itemMenu-list-item19" data-componentid="list-item20" ui-sref="uDSobreRuedas.confirm()" menu-toggle="left">
+                                <i class="icon ion-android-contacts custom-icon"></i><h4>Solicitudes Confirmadas</h4>
+                                <i class="icon ion-chevron-right icon-accessory"></i>
+                            </ion-item>
+                            <ion-item class="item-icon-left item-icon-right" id="itemMenu-list-item19" data-componentid="list-item19" ui-sref="uDSobreRuedas.registroRutas()" menu-toggle="left">
+                                <i class="icon ion-ios-location custom-icon"></i><h4>Administra Tus Rutas</h4>
+                                <i class="icon ion-chevron-right icon-accessory"></i>
+                            </ion-item>
+                        </ion-list>
+                        <div class = "bar bar-footer"  align="center">
+                            <button  class = "button button-energized icon icon-right ion-close" menu-toggle="left" ng-click="logOut()" > Cerrar Sesión&nbsp &nbsp</button>
+                        </div>
+                    </ion-content>
+                </ion-side-menu>
+            </ion-side-menus>
+        </div>
+        <div id="fb-root" style="float: none; position:fixed; margin:0 auto;"></div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/facebookConnectPlugin.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

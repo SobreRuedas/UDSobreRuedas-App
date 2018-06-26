@@ -1,0 +1,19 @@
+<ion-popover-view class="fit">
+    <ion-content >
+        <ion-list >
+            <ion-item id="traficoBtn" style=" padding-top: 0px; padding-left: 0px; padding-bottom: 0px; padding-right: 0px;">
+                <ion-toggle  ng-model="value" ng-checked="value" ng-change="change()" 
+                            toggle-class="toggle" id="toggleTraffic">
+                    Ver Tráfico
+                </ion-toggle>
+            </ion-item>
+            <ion-item  id='actualizaBtn' ng-click="refrescarRutas()">
+                Actualizar Rutas
+            </ion-item>
+            <ion-item id='creaRuta'   ng-click="nuevaRuta()">
+                Crea Tu Ruta
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+</ion-popover-view>
